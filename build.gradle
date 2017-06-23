@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-version '1.0.1-SNAPSHOT'
+version '1.0.3-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -42,12 +42,9 @@ dependencies {
 
 task sourceJar(type: Jar) { from sourceSets.main.allJava }
 
-task bootJar(type: BootRepackage) {
-}
-
 artifacts {
     archives jar
-    archives sourceJar
+    archives sourceJar { classifier "sources" }
 }
 
 uploadArchives {
