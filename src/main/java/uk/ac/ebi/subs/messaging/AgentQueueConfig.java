@@ -25,6 +25,20 @@ public class AgentQueueConfig {
     }
 
     /**
+     * Queue for submission envelopes to be processed by metabolights
+     * @return
+     */
+    @Bean
+    Queue metabolightsQueue() {
+        return new Queue(Queues.METABOLIGHTS_AGENT,true);
+    }
+
+    @Bean
+    Binding metabolightsBinding(Queue metabolightsQueue, TopicExchange submissionExchange) {
+        return BindingBuilder.bind(metabolightsQueue).to(submissionExchange).with(Topics.METABOLIGHTS_PROCESSING);
+    }
+
+    /**
      * Queue for submission envelopes to be processed by ENA
      * @return
      */
@@ -69,6 +83,17 @@ public class AgentQueueConfig {
     @Bean
     Binding enaSamplesUpdatedBinding(Queue enaSamplesUpdated, TopicExchange submissionExchange) {
         return BindingBuilder.bind(enaSamplesUpdated).to(submissionExchange).with(Queues.SAMPLES_UPDATED_ROUTING_KEY);
+    }
+
+    /**
+     * Queue for updated samples envelopes to be used by Metabolights
+     * @return
+     */
+    @Bean Queue metabolightsSamplesUpdated() {return new Queue(Queues.METABOLIGHTS_SAMPLES_UPDATED,true);}
+
+    @Bean
+    Binding metabolightsSamplesUpdatedBinding(Queue metabolightsSamplesUpdated, TopicExchange submissionExchange) {
+        return BindingBuilder.bind(metabolightsSamplesUpdated).to(submissionExchange).with(Queues.SAMPLES_UPDATED_ROUTING_KEY);
     }
 
 
