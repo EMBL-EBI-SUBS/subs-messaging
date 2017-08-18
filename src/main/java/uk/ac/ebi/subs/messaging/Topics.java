@@ -71,6 +71,10 @@ public class Topics {
      */
     public static final String AE_PROCESSING = "usi.submissionenvelope.dispatched.arrayexpress";
 
+    /**
+     * ML processing required
+     */
+    public static final String METABOLIGHTS_PROCESSING = "usi.submissionenvelope.dispatched.metabolights";
 
 
 }

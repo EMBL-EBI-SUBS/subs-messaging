@@ -32,9 +32,11 @@ public class Queues {
     public static final String BIOSAMPLES_AGENT = "usi-submission-agent-biosamples";
     public static final String ENA_AGENT = "usi-submission-agents-ena";
     public static final String AE_AGENT = "usi-submission-agents-arrayexpress";
+    public static final String METABOLIGHTS_AGENT = "usi-submission-agents-metabolights";
 
     public static final String ENA_SAMPLES_UPDATED = "usi-submission-agents-ena-samples-updated";
     public static final String AE_SAMPLES_UPDATED = "usi-submission-agents-ae-samples-updated";
+    public static final String METABOLIGHTS_SAMPLES_UPDATED = "usi-submission-agents-metabolights-samples-updated";
     public static final String SAMPLES_UPDATED_ROUTING_KEY = Topics.EVENT_SAMPLES_UPDATED;
 
 
