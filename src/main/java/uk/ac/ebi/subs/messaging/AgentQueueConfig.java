@@ -15,9 +15,7 @@ public class AgentQueueConfig {
      * @return
      */
     @Bean
-    Queue biosamplesQueue() {
-        return new Queue(Queues.BIOSAMPLES_AGENT,true);
-    }
+    Queue biosamplesQueue() { return Queues.buildQueueWithDlx(Queues.BIOSAMPLES_AGENT); }
 
     @Bean
     Binding biosamplesBinding(Queue biosamplesQueue, TopicExchange submissionExchange) {
@@ -30,7 +28,7 @@ public class AgentQueueConfig {
      */
     @Bean
     Queue metabolightsQueue() {
-        return new Queue(Queues.METABOLIGHTS_AGENT,true);
+        return Queues.buildQueueWithDlx(Queues.METABOLIGHTS_AGENT);
     }
 
     @Bean
@@ -43,7 +41,7 @@ public class AgentQueueConfig {
      * @return
      */
     @Bean Queue enaQueue() {
-        return new Queue(Queues.ENA_AGENT,true);
+        return Queues.buildQueueWithDlx(Queues.ENA_AGENT);
     }
 
     @Bean
@@ -55,9 +53,7 @@ public class AgentQueueConfig {
      * Queue for submission envelopes to be processed by ArrayExpress
      * @return
      */
-    @Bean Queue aeQueue() {
-        return new Queue(Queues.AE_AGENT,true);
-    }
+    @Bean Queue aeQueue() { return Queues.buildQueueWithDlx(Queues.AE_AGENT); }
 
     @Bean
     Binding aeBinding(Queue aeQueue, TopicExchange submissionExchange) {
@@ -68,7 +64,7 @@ public class AgentQueueConfig {
      * Queue for submission envelopes that need supporting information (samples)
      * @return
      */
-    @Bean Queue sampleSuppInfoQueue() {return new Queue(Queues.SUBMISSION_NEEDS_SAMPLE_INFO,true); }
+    @Bean Queue sampleSuppInfoQueue() {return Queues.buildQueueWithDlx(Queues.SUBMISSION_NEEDS_SAMPLE_INFO); }
 
     @Bean Binding sampleSuppInfoBinding(Queue sampleSuppInfoQueue, TopicExchange submissionExchange){
         return BindingBuilder.bind(sampleSuppInfoQueue).to(submissionExchange).with(Queues.SUBMISSION_NEEDS_SAMPLE_INFO_ROUTING_KEY);
@@ -78,7 +74,7 @@ public class AgentQueueConfig {
      * Queue for updated samples envelopes to be used by ENA
      * @return
      */
-    @Bean Queue enaSamplesUpdated() {return new Queue(Queues.ENA_SAMPLES_UPDATED,true);}
+    @Bean Queue enaSamplesUpdated() {return Queues.buildQueueWithDlx(Queues.ENA_SAMPLES_UPDATED);}
 
     @Bean
     Binding enaSamplesUpdatedBinding(Queue enaSamplesUpdated, TopicExchange submissionExchange) {
@@ -89,7 +85,7 @@ public class AgentQueueConfig {
      * Queue for updated samples envelopes to be used by Metabolights
      * @return
      */
-    @Bean Queue metabolightsSamplesUpdated() {return new Queue(Queues.METABOLIGHTS_SAMPLES_UPDATED,true);}
+    @Bean Queue metabolightsSamplesUpdated() {return Queues.buildQueueWithDlx(Queues.METABOLIGHTS_SAMPLES_UPDATED);}
 
     @Bean
     Binding metabolightsSamplesUpdatedBinding(Queue metabolightsSamplesUpdated, TopicExchange submissionExchange) {
@@ -101,7 +97,7 @@ public class AgentQueueConfig {
      * Queue for updated sample envelopes to be used by AE
      * @return
      */
-    @Bean Queue aeSamplesUpdated() {return new Queue(Queues.AE_SAMPLES_UPDATED,true);}
+    @Bean Queue aeSamplesUpdated() {return Queues.buildQueueWithDlx(Queues.AE_SAMPLES_UPDATED);}
 
     @Bean
     Binding aeSamplesUpdatedBinding(Queue aeSamplesUpdated, TopicExchange submissionExchange) {

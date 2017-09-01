@@ -1,9 +1,11 @@
 package uk.ac.ebi.subs.messaging;
 
 
-public class Exchanges {
+class Exchanges {
 
-    public static final String USI_CONTRACT_VERSION = "usi-1";
+    private static final String USI_CONTRACT_VERSION = "usi-1";
 
-    public static final String SUBMISSIONS = USI_CONTRACT_VERSION+":submission-exchange";
+    static final String SUBMISSIONS = USI_CONTRACT_VERSION+":submission-exchange";
+
+    static final String DEAD_LETTER_EXCHANGE = USI_CONTRACT_VERSION+":dead-letter-exchange";
 }
