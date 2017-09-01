@@ -1,7 +1,7 @@
 package uk.ac.ebi.subs.messaging;
 
 
-class Exchanges {
+public class Exchanges {
 
     private static final String USI_CONTRACT_VERSION = "usi-1";
 
