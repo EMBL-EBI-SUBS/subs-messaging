@@ -62,6 +62,12 @@ public class Topics {
     public static final String SAMPLES_PROCESSING = "usi.submissionenvelope.dispatched.biosamples";
 
     /**
+     * Samples processing required
+     */
+    public static final String BIOSTUDIES_PROCESSING = "usi.submissionenvelope.dispatched.biostudies";
+
+
+    /**
      * ENA processing required
      */
     public static final String ENA_PROCESSING = "usi.submissionenvelope.dispatched.ena";

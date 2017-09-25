@@ -33,6 +33,7 @@ public class Queues {
     public static final String SUBMISSION_VALIDATOR_SUBMISSION_UPDATED_ROUTING_KEY = Topics.EVENT_SUBMISSION_UPDATED;
 
     public static final String BIOSAMPLES_AGENT = "usi-submission-agent-biosamples";
+    public static final String BIOSTUDIES_AGENT = "usi-submission-agent-biostudies";
     public static final String ENA_AGENT = "usi-submission-agents-ena";
     public static final String AE_AGENT = "usi-submission-agents-arrayexpress";
     public static final String METABOLIGHTS_AGENT = "usi-submission-agents-metabolights";

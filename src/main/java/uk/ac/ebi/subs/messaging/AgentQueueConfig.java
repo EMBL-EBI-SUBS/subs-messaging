@@ -15,6 +15,18 @@ public class AgentQueueConfig {
      * @return
      */
     @Bean
+    Queue biostudiesQueue() { return Queues.buildQueueWithDlx(Queues.BIOSTUDIES_AGENT); }
+
+    @Bean
+    Binding biostudiesBinding(Queue biostudiesQueue, TopicExchange submissionExchange) {
+        return BindingBuilder.bind(biostudiesQueue).to(submissionExchange).with(Topics.BIOSTUDIES_PROCESSING);
+    }
+
+    /**
+     * Queue for submission envelopes to be processed by biosamples
+     * @return
+     */
+    @Bean
     Queue biosamplesQueue() { return Queues.buildQueueWithDlx(Queues.BIOSAMPLES_AGENT); }
 
     @Bean
