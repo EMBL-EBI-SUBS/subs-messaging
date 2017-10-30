@@ -2,6 +2,7 @@ package uk.ac.ebi.subs.messaging;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
 import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -27,6 +28,7 @@ public class MappingConfig {
 
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         objectMapper.registerModule(new AfterburnerModule()); //MOAR SPEED
+        objectMapper.registerModule(new JavaTimeModule());
 
         return converter;
     }
