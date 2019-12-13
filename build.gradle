@@ -3,15 +3,10 @@ buildscript {
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
     }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
-    }
 }
 
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.2.1.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'maven-publish'
 }
 
@@ -29,14 +24,14 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-amqp")
+    implementation("org.springframework.boot:spring-boot-starter-amqp:2.2.1.RELEASE")
     implementation("com.fasterxml.jackson.module:jackson-module-afterburner:2.7.1")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.2.1.RELEASE")
     testImplementation("com.google.code.gson:gson:2.7") //bug in spring boot, see https://github.com/spring-projects/spring-boot/issues/6502
 }
 
-task fatJar(type: Jar) {
+task jarWithAddedManifest(type: Jar) {
     manifest {
         attributes(
                 'Implementation-Title': project.name,
@@ -44,11 +39,6 @@ task fatJar(type: Jar) {
                 'Built-By': System.getProperty('user.name'),
                 'Built-Date': new Date(),
                 'Source-Compatibility': project.sourceCompatibility)
-    }
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
     }
     with jar
 }
@@ -62,12 +52,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId = 'subs-messaging'
-
-            artifact(sourceJar) {
-                classifier 'sources'
-            }
-
-            artifact fatJar
 
             pom {
                 name = 'subs-messaging'
@@ -92,6 +76,8 @@ publishing {
                     url = 'https://github.com/EMBL-EBI-SUBS/subs-messaging.git'
                 }
             }
+
+            from components.java
         }
     }
     repositories {
@@ -107,6 +93,3 @@ publishing {
     }
 }
 
-bootJar {
-    enabled = false
-}
