@@ -10,7 +10,7 @@ plugins {
     id 'maven-publish'
 }
 
-version '0.6.0-SNAPSHOT'
+version '0.7.0-SNAPSHOT'
 group 'uk.ac.ebi.subs'
 
 sourceCompatibility = JavaVersion.VERSION_11

@@ -82,5 +82,6 @@ public class Topics {
      */
     public static final String METABOLIGHTS_PROCESSING = "usi.submissionenvelope.dispatched.metabolights";
 
-
+    public static final String GLOBUS_SHARE_REQUEST = "usi.fu.globus.share.request";
+    public static final String GLOBUS_UPLOADED_FILES_NOTIFICATION = "usi.fu.globus.notification.uploadedfiles";
 }
